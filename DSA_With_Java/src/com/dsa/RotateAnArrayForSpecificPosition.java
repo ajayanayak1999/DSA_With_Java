@@ -1,0 +1,59 @@
+package com.dsa;
+
+public class RotateAnArrayForSpecificPosition {
+	
+//	public static void rotate(int[] arr,int pos) {
+//		int start=1;
+//		int end=pos;
+//		while(start<pos & end<arr.length) {
+//			int temp=arr[end];
+//			arr[end+1]=arr[start-1];
+//			arr[start]=temp;
+//			start++;
+//			end++;
+//		}
+//		for(int i:arr) {
+//			System.out.print(i+" ");
+//		}
+//	}
+	
+	//we need to check if the array is rotated..?
+	//if so then we have to put the binary search algo..
+	//if not then we have to search it simple manner..
+	
+	public static int findElementinRotatedArray(int[] arr,int ele) {
+		int start=0;
+		int end=arr.length-1;
+		
+		while(start<=end) {
+			int mid=(start+end)/2;
+			if(arr[mid]==ele) {
+					return mid;}
+			if(arr[start]<=arr[mid]) {
+					if(arr[start]<= ele && ele < arr[mid]) {
+						end=mid-1;
+					}else {
+						start=mid+1;
+					}
+				}
+		else {
+					if(arr[mid]<=arr[end]) {
+						if(arr[mid]<ele && ele<=arr[end]) {
+							start=mid+1;
+						}else {
+							end=end-1;
+						}
+					}
+	
+				}
+			}
+		
+		return -1;
+		
+	}
+	public static void main(String[] args) {
+		int[] arr= {4,5,6,7,0,1,2};
+		int ele=0;
+		System.out.println("Result is: "+findElementinRotatedArray(arr,ele));
+	}
+}
