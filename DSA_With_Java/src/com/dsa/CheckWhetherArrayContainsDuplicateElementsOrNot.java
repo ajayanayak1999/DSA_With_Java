@@ -1,4 +1,4 @@
-package com.dsa;
+ package com.dsa;
 
 public class CheckWhetherArrayContainsDuplicateElementsOrNot {
 	public static boolean checkArray(int[] num) {

@@ -1,4 +1,4 @@
-package com.dsa;
+ package com.dsa;
 
 public class MaxSubArraySum {
 	public static int subArraySum(int[] arr) {
