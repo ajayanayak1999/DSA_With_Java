@@ -1,0 +1,59 @@
+ package com.dsa;
+
+public class TrappingRainWater {
+	
+	public static int trappingWater(int[] arr) {
+		
+		int leftMaxArray[]=new int[arr.length];
+		int rightMaxArray[]=new int[arr.length];
+		
+		leftMaxArray[0]=arr[0];
+		rightMaxArray[arr.length-1]=arr[arr.length-1];
+		
+		for(int i=1;i<arr.length;i++) {
+			if(leftMaxArray[i-1]>arr[i]) {
+				leftMaxArray[i]=leftMaxArray[i-1];
+			}else {
+				leftMaxArray[i]=arr[i];
+			}
+		}
+		
+		for(int i=arr.length-2;i>=0;i--) {
+			if(rightMaxArray[i+1]>arr[i]) {
+				rightMaxArray[i]=rightMaxArray[i+1];
+			}else {
+				rightMaxArray[i]=arr[i];
+			}
+		}
+//		printArray(leftMaxArray);
+//		System.out.println();
+//		printArray(rightMaxArray);
+		int trappedWater=0;
+		int width=1;
+		if(arr.length>2) {
+		for(int i=0;i<arr.length;i++) {
+			int waterLevel=Math.min(leftMaxArray[i],rightMaxArray[i]);
+			trappedWater=trappedWater+((waterLevel-arr[i])*width);
+		}
+		return trappedWater;
+		}else {
+			return 0;
+		}
+		
+	}
+	
+	public static void printArray(int[] arr) {
+		for(int i=0;i<arr.length;i++) {
+			System.out.print(arr[i]+" ");
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] height= {4,2,0,6,3,2,5};
+		trappingWater(height);
+		System.out.println("Trapped water qty: "+trappingWater(height));
+
+	}
+
+}
