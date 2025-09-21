@@ -2,6 +2,7 @@
 
 public class BestTimeToBuyAndSellTheStock {
 	
+	//Comment
 	public static int calcProfit(int[] prices) {
 		int buyPrice=prices[0];
 		int maxProfit=0;
@@ -11,7 +12,7 @@ public class BestTimeToBuyAndSellTheStock {
 				int profit=sellPrice-buyPrice;
 				maxProfit=Math.max(maxProfit, profit);
 			}else {
-				buyPrice=sellPrice;
+				buyPrice = sellPrice;
 			}
 		}
 		return maxProfit;
